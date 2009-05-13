@@ -43,19 +43,6 @@ class Baseapp < ActiveRecord::Migration
       t.timestamps
     end
     
-    # Create OpenID Tables
-    create_table :open_id_authentication_associations, :force => true do |t|
-      t.integer :issued, :lifetime
-      t.string :handle, :assoc_type
-      t.binary :server_url, :secret
-    end
-
-    create_table :open_id_authentication_nonces, :force => true do |t|
-      t.integer :timestamp, :null => false
-      t.string :server_url, :null => true
-      t.string :salt, :null => false
-    end
-    
     create_table :roles do |t|
       t.column :name, :string
     end
@@ -71,7 +58,7 @@ class Baseapp < ActiveRecord::Migration
     
     user = User.create do |u|
       u.login = 'admin'
-      u.password = u.password_confirmation = 'yippeekayea'
+      u.password = u.password_confirmation = 'adminadmin'
       u.email = 'nospam@example.com'
     end
     
@@ -86,8 +73,6 @@ class Baseapp < ActiveRecord::Migration
     drop_table :settings
     drop_table :users
     drop_table :profiles
-    drop_table :open_id_authentication_associations
-    drop_table :open_id_authentication_nonces
     drop_table :roles
     drop_table :roles_users
   end

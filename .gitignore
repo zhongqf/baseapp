@@ -3,6 +3,7 @@ tmp/*
 database.yml
 *.sqlite
 *.sqlite3
+*.swp
 doc/api
 .DS_Store
 .svn
